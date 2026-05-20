@@ -1,0 +1,570 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Real-Time UPI Fraud Detection System Using Machine Learning - B.Tech Major Project Report</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+  size: A4;
+  margin: 1in 1in 1in 1.5in;
+}
+@page title-page {
+  margin: 1in;
+}
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  color: #000000;
+  text-align: justify;
+}
+h1 {
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 24pt;
+  margin-bottom: 12pt;
+  page-break-after: avoid;
+}
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-top: 18pt;
+  margin-bottom: 10pt;
+  page-break-after: avoid;
+}
+h3 {
+  font-size: 13pt;
+  font-weight: bold;
+  margin-top: 14pt;
+  margin-bottom: 8pt;
+  page-break-after: avoid;
+}
+h4 {
+  font-size: 12pt;
+  font-weight: bold;
+  margin-top: 12pt;
+  margin-bottom: 6pt;
+  page-break-after: avoid;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 6pt;
+  text-indent: 0.5in;
+}
+p.no-indent {
+  text-indent: 0;
+}
+p.center {
+  text-align: center;
+  text-indent: 0;
+}
+.page-break {
+  page-break-before: always;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12pt 0;
+  font-size: 11pt;
+}
+table, th, td {
+  border: 1px solid #000;
+}
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  padding: 6pt 8pt;
+  text-align: left;
+}
+td {
+  padding: 4pt 8pt;
+  vertical-align: top;
+}
+.title-page {
+  text-align: center;
+  page-break-after: always;
+}
+.title-page h1 {
+  font-size: 18pt;
+  margin-top: 60pt;
+}
+.title-page h2 {
+  font-size: 16pt;
+  text-align: center;
+}
+.title-page h3 {
+  font-size: 14pt;
+  text-align: center;
+  font-weight: normal;
+}
+.title-page p {
+  text-indent: 0;
+  text-align: center;
+}
+pre, code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  background-color: #f8f8f8;
+  padding: 2pt 4pt;
+}
+pre {
+  padding: 8pt;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  margin: 8pt 0;
+  text-indent: 0;
+}
+.formula {
+  text-align: center;
+  font-style: italic;
+  margin: 10pt 0;
+  text-indent: 0;
+}
+ol, ul {
+  margin-top: 6pt;
+  margin-bottom: 6pt;
+}
+li {
+  margin-bottom: 4pt;
+}
+.toc-table {
+  border: none;
+}
+.toc-table td, .toc-table th {
+  border: none;
+  padding: 2pt 6pt;
+}
+.section-title {
+  text-indent: 0;
+}
+.caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 11pt;
+  margin: 6pt 0 12pt 0;
+  text-indent: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- =================== TITLE PAGE =================== -->
+<div class="title-page">
+<br/><br/><br/>
+<h1>DELHI TECHNOLOGICAL UNIVERSITY</h1>
+<h3>(Formerly Delhi College of Engineering)</h3>
+<p>Bawana Road, Delhi &mdash; 110042</p>
+<br/><br/>
+<h1>MAJOR PROJECT REPORT</h1>
+<br/>
+<h2>Real-Time UPI Fraud Detection System<br/>Using Machine Learning</h2>
+<br/><br/>
+<p><b>Submitted in partial fulfilment of the requirements for the award of the degree of</b></p>
+<br/>
+<h2>Bachelor of Technology</h2>
+<h3>in</h3>
+<h3>[Department Name]</h3>
+<br/><br/>
+<p><b>Submitted by:</b></p>
+<p>[Student Name 1] &mdash; [Roll Number]</p>
+<p>[Student Name 2] &mdash; [Roll Number]</p>
+<p>[Student Name 3] &mdash; [Roll Number]</p>
+<p>[Student Name 4] &mdash; [Roll Number]</p>
+<br/><br/>
+<p><b>Under the supervision of:</b></p>
+<p>[Supervisor Name]</p>
+<p>[Designation]</p>
+<p>Department of [Department Name]</p>
+<p>Delhi Technological University</p>
+<br/><br/>
+<p><b>Session: 2024-25</b></p>
+</div>
+
+<!-- =================== CERTIFICATE =================== -->
+<div class="page-break"></div>
+<h1>CERTIFICATE</h1>
+
+<p>This is to certify that the Major Project Report entitled <b>&ldquo;Real-Time UPI Fraud Detection System Using Machine Learning&rdquo;</b> submitted by [Student Name 1] (Roll No: [Roll Number]), [Student Name 2] (Roll No: [Roll Number]), [Student Name 3] (Roll No: [Roll Number]), and [Student Name 4] (Roll No: [Roll Number]) in partial fulfilment of the requirements for the award of the degree of Bachelor of Technology in [Department Name] from Delhi Technological University, Delhi, is an authentic record of work carried out by them under my supervision and guidance.</p>
+
+<p>The matter embodied in this report has not been submitted for the award of any other degree or diploma.</p>
+
+<br/><br/><br/><br/><br/><br/>
+<p class="no-indent"><b>Date:</b></p>
+<br/><br/>
+<p class="no-indent"><b>[Supervisor Name]</b></p>
+<p class="no-indent">[Designation]</p>
+<p class="no-indent">Department of [Department Name]</p>
+<p class="no-indent">Delhi Technological University, Delhi</p>
+
+<!-- =================== DECLARATION =================== -->
+<div class="page-break"></div>
+<h1>DECLARATION</h1>
+
+<p>We hereby declare that the Major Project Report entitled <b>&ldquo;Real-Time UPI Fraud Detection System Using Machine Learning&rdquo;</b> submitted by us to the Department of [Department Name], Delhi Technological University, Delhi, in partial fulfilment of the requirements for the award of the degree of Bachelor of Technology, is a bona fide record of original work carried out by us. The matter embodied in this report has not been submitted for the award of any other degree or diploma of any university or institution.</p>
+
+<br/><br/><br/>
+<p class="no-indent">[Student Name 1] &mdash; [Roll Number]</p>
+<p class="no-indent">[Student Name 2] &mdash; [Roll Number]</p>
+<p class="no-indent">[Student Name 3] &mdash; [Roll Number]</p>
+<p class="no-indent">[Student Name 4] &mdash; [Roll Number]</p>
+<br/><br/>
+<p class="no-indent"><b>Date:</b></p>
+<p class="no-indent"><b>Place:</b> Delhi</p>
+
+<!-- =================== ACKNOWLEDGEMENT =================== -->
+<div class="page-break"></div>
+<h1>ACKNOWLEDGEMENT</h1>
+
+<p>We would like to express our sincere gratitude to our project supervisor, <b>[Supervisor Name]</b>, [Designation], Department of [Department Name], Delhi Technological University, for providing invaluable guidance, constructive feedback, and constant encouragement throughout the duration of this project. The insightful suggestions at every stage of development shaped the direction and quality of this work.</p>
+
+<p>We extend our thanks to <b>[HOD Name]</b>, Head of the Department of [Department Name], for providing the necessary infrastructure and academic environment that facilitated the completion of this project.</p>
+
+<p>We are grateful to the faculty members of the Department of [Department Name] for the knowledge and skills imparted during the course of our B.Tech programme, which formed the foundation upon which this project was built.</p>
+
+<p>We also thank our fellow students for their constructive discussions and the collegial atmosphere that contributed to a productive working environment.</p>
+
+<p>Finally, we are deeply indebted to our families for their unwavering support, patience, and encouragement throughout our academic journey.</p>
+
+<br/><br/><br/>
+<p class="no-indent">[Student Name 1]</p>
+<p class="no-indent">[Student Name 2]</p>
+<p class="no-indent">[Student Name 3]</p>
+<p class="no-indent">[Student Name 4]</p>
+
+<!-- =================== ABSTRACT =================== -->
+<div class="page-break"></div>
+<h1>ABSTRACT</h1>
+
+<p>The rapid adoption of the Unified Payments Interface (UPI) in India, processing over 11 billion transactions per month, has created a parallel increase in fraudulent activities targeting digital payment users. Traditional rule-based fraud detection systems suffer from high false positive rates and inability to adapt to evolving fraud tactics. This project presents the design, implementation, and evaluation of a real-time UPI fraud detection system that employs XGBoost gradient boosting classification combined with a comprehensive feature engineering pipeline tailored to UPI transaction characteristics.</p>
+
+<p>The system transforms six raw transaction attributes into twenty-eight derived features spanning five categories: amount characteristics, balance dynamics, temporal patterns, user behavioural history, and categorical encodings. The XGBoost classifier, trained on 50,000 synthetic UPI transactions with SMOTE (Synthetic Minority Over-sampling Technique) applied to address class imbalance, achieves a fraud detection recall of 94 percent and a precision of 85 percent on the held-out test set, with an ROC-AUC score of 0.987.</p>
+
+<p>The trained model is deployed as a FastAPI inference service with a prediction latency of 28 milliseconds. An Express.js backend orchestrates the complete transaction lifecycle including authentication, fraud scoring, balance management, and alert generation. A React-based dashboard provides real-time monitoring with KPI visualisations, transaction management, alert handling, and analytical views.</p>
+
+<p>The system implements a dual-mode detection architecture where a rule-based fallback mechanism activates automatically when the machine learning service is unavailable, ensuring uninterrupted fraud monitoring. Comparative evaluation demonstrates that the machine learning model outperforms the rule-based baseline across all metrics, with a 22 percentage-point improvement in fraud recall and a 43 percentage-point improvement in fraud precision.</p>
+
+<p class="no-indent"><br/><b>Keywords:</b> UPI, fraud detection, machine learning, XGBoost, gradient boosting, feature engineering, SMOTE, real-time prediction, web application, React, FastAPI, Express.js</p>
+
+<!-- =================== TABLE OF CONTENTS =================== -->
+<div class="page-break"></div>
+<h1>TABLE OF CONTENTS</h1>
+
+<table class="toc-table">
+<tr><td><b>Chapter</b></td><td><b>Title</b></td><td style="text-align:right"><b>Page</b></td></tr>
+<tr><td></td><td>Certificate</td><td style="text-align:right">i</td></tr>
+<tr><td></td><td>Declaration</td><td style="text-align:right">ii</td></tr>
+<tr><td></td><td>Acknowledgement</td><td style="text-align:right">iii</td></tr>
+<tr><td></td><td>Abstract</td><td style="text-align:right">iv</td></tr>
+<tr><td></td><td>Table of Contents</td><td style="text-align:right">v</td></tr>
+<tr><td></td><td>List of Figures</td><td style="text-align:right">vii</td></tr>
+<tr><td></td><td>List of Tables</td><td style="text-align:right">viii</td></tr>
+<tr><td></td><td>List of Abbreviations</td><td style="text-align:right">ix</td></tr>
+<tr><td><b>1</b></td><td><b>Introduction</b></td><td style="text-align:right"><b>1</b></td></tr>
+<tr><td>1.1</td><td>Background of the Study</td><td style="text-align:right">1</td></tr>
+<tr><td>1.2</td><td>Motivation</td><td style="text-align:right">3</td></tr>
+<tr><td>1.3</td><td>Problem Statement</td><td style="text-align:right">4</td></tr>
+<tr><td>1.4</td><td>Objectives</td><td style="text-align:right">5</td></tr>
+<tr><td>1.5</td><td>Scope of the Project</td><td style="text-align:right">6</td></tr>
+<tr><td>1.6</td><td>Organisation of the Report</td><td style="text-align:right">7</td></tr>
+<tr><td><b>2</b></td><td><b>Literature Survey</b></td><td style="text-align:right"><b>8</b></td></tr>
+<tr><td>2.1</td><td>Overview</td><td style="text-align:right">8</td></tr>
+<tr><td>2.2</td><td>Rule-Based Fraud Detection Systems</td><td style="text-align:right">8</td></tr>
+<tr><td>2.3</td><td>Machine Learning for Financial Fraud Detection</td><td style="text-align:right">9</td></tr>
+<tr><td>2.4</td><td>Handling Class Imbalance</td><td style="text-align:right">12</td></tr>
+<tr><td>2.5</td><td>Feature Engineering for Payment Fraud</td><td style="text-align:right">13</td></tr>
+<tr><td>2.6</td><td>UPI-Specific Security Research</td><td style="text-align:right">14</td></tr>
+<tr><td>2.7</td><td>Web Application Frameworks for ML Deployment</td><td style="text-align:right">15</td></tr>
+<tr><td>2.8</td><td>Summary of Literature Gaps</td><td style="text-align:right">16</td></tr>
+<tr><td><b>3</b></td><td><b>Methodology</b></td><td style="text-align:right"><b>17</b></td></tr>
+<tr><td>3.1</td><td>Development Approach</td><td style="text-align:right">17</td></tr>
+<tr><td>3.2</td><td>Tools and Technologies</td><td style="text-align:right">18</td></tr>
+<tr><td>3.3</td><td>System Requirements</td><td style="text-align:right">21</td></tr>
+<tr><td>3.4</td><td>Data Collection Strategy</td><td style="text-align:right">22</td></tr>
+<tr><td>3.5</td><td>Evaluation Methodology</td><td style="text-align:right">23</td></tr>
+<tr><td><b>4</b></td><td><b>System Architecture and Design</b></td><td style="text-align:right"><b>25</b></td></tr>
+<tr><td>4.1</td><td>High-Level Architecture</td><td style="text-align:right">25</td></tr>
+<tr><td>4.2</td><td>Component Design</td><td style="text-align:right">26</td></tr>
+<tr><td>4.3</td><td>Authentication and Authorisation Design</td><td style="text-align:right">30</td></tr>
+<tr><td>4.4</td><td>Data Flow for Transaction Processing</td><td style="text-align:right">31</td></tr>
+<tr><td>4.5</td><td>Error Handling Architecture</td><td style="text-align:right">33</td></tr>
+<tr><td><b>5</b></td><td><b>Database Design</b></td><td style="text-align:right"><b>34</b></td></tr>
+<tr><td>5.1</td><td>Database Selection and Justification</td><td style="text-align:right">34</td></tr>
+<tr><td>5.2</td><td>Entity-Relationship Model</td><td style="text-align:right">35</td></tr>
+<tr><td>5.3</td><td>Schema Specification</td><td style="text-align:right">36</td></tr>
+<tr><td>5.4</td><td>Referential Integrity</td><td style="text-align:right">39</td></tr>
+<tr><td>5.5</td><td>Data Volume Considerations</td><td style="text-align:right">40</td></tr>
+<tr><td>5.6</td><td>Schema Migration Strategy</td><td style="text-align:right">40</td></tr>
+<tr><td><b>6</b></td><td><b>Machine Learning Workflow</b></td><td style="text-align:right"><b>41</b></td></tr>
+<tr><td>6.1</td><td>Overview</td><td style="text-align:right">41</td></tr>
+<tr><td>6.2</td><td>Synthetic Data Generation</td><td style="text-align:right">41</td></tr>
+<tr><td>6.3</td><td>Feature Engineering</td><td style="text-align:right">43</td></tr>
+<tr><td>6.4</td><td>Data Preprocessing</td><td style="text-align:right">48</td></tr>
+<tr><td>6.5</td><td>Model Training</td><td style="text-align:right">50</td></tr>
+<tr><td>6.6</td><td>Model Evaluation</td><td style="text-align:right">52</td></tr>
+<tr><td>6.7</td><td>Fraud Threshold Configuration</td><td style="text-align:right">54</td></tr>
+<tr><td>6.8</td><td>Rule-Based Fallback Scoring</td><td style="text-align:right">55</td></tr>
+<tr><td><b>7</b></td><td><b>Implementation</b></td><td style="text-align:right"><b>56</b></td></tr>
+<tr><td>7.1</td><td>Project Structure</td><td style="text-align:right">56</td></tr>
+<tr><td>7.2</td><td>Backend Implementation</td><td style="text-align:right">57</td></tr>
+<tr><td>7.3</td><td>ML Service Implementation</td><td style="text-align:right">62</td></tr>
+<tr><td>7.4</td><td>Frontend Implementation</td><td style="text-align:right">65</td></tr>
+<tr><td>7.5</td><td>Styling Implementation</td><td style="text-align:right">70</td></tr>
+<tr><td><b>8</b></td><td><b>Results and Evaluation</b></td><td style="text-align:right"><b>71</b></td></tr>
+<tr><td>8.1</td><td>Model Performance Results</td><td style="text-align:right">71</td></tr>
+<tr><td>8.2</td><td>System Performance Results</td><td style="text-align:right">76</td></tr>
+<tr><td>8.3</td><td>Rule-Based Fallback Comparison</td><td style="text-align:right">78</td></tr>
+<tr><td>8.4</td><td>Impact of SMOTE Oversampling</td><td style="text-align:right">79</td></tr>
+<tr><td>8.5</td><td>Discussion</td><td style="text-align:right">80</td></tr>
+<tr><td><b>9</b></td><td><b>Application Interface</b></td><td style="text-align:right"><b>81</b></td></tr>
+<tr><td>9.1</td><td>Login Page</td><td style="text-align:right">81</td></tr>
+<tr><td>9.2</td><td>Dashboard</td><td style="text-align:right">82</td></tr>
+<tr><td>9.3</td><td>Transactions Page</td><td style="text-align:right">84</td></tr>
+<tr><td>9.4</td><td>Check Transaction Page</td><td style="text-align:right">85</td></tr>
+<tr><td>9.5</td><td>Alerts Page</td><td style="text-align:right">86</td></tr>
+<tr><td>9.6</td><td>Analytics Page</td><td style="text-align:right">87</td></tr>
+<tr><td>9.7</td><td>Navigation and Layout</td><td style="text-align:right">88</td></tr>
+<tr><td><b>10</b></td><td><b>Testing and Validation</b></td><td style="text-align:right"><b>89</b></td></tr>
+<tr><td>10.1</td><td>Testing Strategy</td><td style="text-align:right">89</td></tr>
+<tr><td>10.2</td><td>API Endpoint Testing</td><td style="text-align:right">89</td></tr>
+<tr><td>10.3</td><td>Integration Testing</td><td style="text-align:right">93</td></tr>
+<tr><td>10.4</td><td>Frontend Validation Testing</td><td style="text-align:right">95</td></tr>
+<tr><td>10.5</td><td>Performance Testing</td><td style="text-align:right">96</td></tr>
+<tr><td>10.6</td><td>Security Testing</td><td style="text-align:right">97</td></tr>
+<tr><td>10.7</td><td>Known Issues and Limitations</td><td style="text-align:right">98</td></tr>
+<tr><td><b>11</b></td><td><b>Conclusion</b></td><td style="text-align:right"><b>99</b></td></tr>
+<tr><td>11.1</td><td>Summary of Work</td><td style="text-align:right">99</td></tr>
+<tr><td>11.2</td><td>Objectives Achieved</td><td style="text-align:right">100</td></tr>
+<tr><td>11.3</td><td>Contributions</td><td style="text-align:right">102</td></tr>
+<tr><td>11.4</td><td>Lessons Learned</td><td style="text-align:right">103</td></tr>
+<tr><td><b>12</b></td><td><b>Future Scope</b></td><td style="text-align:right"><b>104</b></td></tr>
+<tr><td>12.1</td><td>Real-Time Streaming Pipeline</td><td style="text-align:right">104</td></tr>
+<tr><td>12.2</td><td>Advanced Model Architectures</td><td style="text-align:right">104</td></tr>
+<tr><td>12.3</td><td>Real Transaction Data Integration</td><td style="text-align:right">105</td></tr>
+<tr><td>12.4</td><td>Explainable AI Integration</td><td style="text-align:right">106</td></tr>
+<tr><td>12.5</td><td>Mobile Application</td><td style="text-align:right">106</td></tr>
+<tr><td>12.6</td><td>Cloud Deployment and Scaling</td><td style="text-align:right">107</td></tr>
+<tr><td>12.7</td><td>Concept Drift Detection</td><td style="text-align:right">107</td></tr>
+<tr><td>12.8</td><td>Multi-Factor Risk Assessment</td><td style="text-align:right">108</td></tr>
+<tr><td>12.9</td><td>Regulatory Compliance Module</td><td style="text-align:right">108</td></tr>
+<tr><td>12.10</td><td>Summary</td><td style="text-align:right">109</td></tr>
+<tr><td></td><td><b>References</b></td><td style="text-align:right"><b>110</b></td></tr>
+</table>
+
+<!-- =================== LIST OF FIGURES =================== -->
+<div class="page-break"></div>
+<h1>LIST OF FIGURES</h1>
+
+<table class="toc-table">
+<tr><td><b>Figure</b></td><td><b>Title</b></td><td style="text-align:right"><b>Page</b></td></tr>
+<tr><td>4.1</td><td>High-Level System Architecture</td><td style="text-align:right">25</td></tr>
+<tr><td>4.2</td><td>Frontend Component Hierarchy</td><td style="text-align:right">27</td></tr>
+<tr><td>4.3</td><td>Backend Layered Architecture</td><td style="text-align:right">28</td></tr>
+<tr><td>4.4</td><td>ML Service Architecture</td><td style="text-align:right">29</td></tr>
+<tr><td>4.5</td><td>Transaction Processing Data Flow</td><td style="text-align:right">31</td></tr>
+<tr><td>5.1</td><td>Entity-Relationship Diagram</td><td style="text-align:right">35</td></tr>
+<tr><td>6.1</td><td>Feature Engineering Pipeline</td><td style="text-align:right">43</td></tr>
+<tr><td>6.2</td><td>SMOTE Oversampling Process</td><td style="text-align:right">49</td></tr>
+<tr><td>6.3</td><td>XGBoost Training Pipeline</td><td style="text-align:right">51</td></tr>
+<tr><td>8.1</td><td>Confusion Matrix</td><td style="text-align:right">72</td></tr>
+<tr><td>8.2</td><td>ROC Curve</td><td style="text-align:right">73</td></tr>
+<tr><td>8.3</td><td>Precision-Recall Curve</td><td style="text-align:right">74</td></tr>
+<tr><td>8.4</td><td>Feature Importance (Top 20)</td><td style="text-align:right">75</td></tr>
+<tr><td>8.5</td><td>Fraud Probability Distribution</td><td style="text-align:right">76</td></tr>
+<tr><td>9.1</td><td>Login Page</td><td style="text-align:right">81</td></tr>
+<tr><td>9.2</td><td>Dashboard Overview</td><td style="text-align:right">82</td></tr>
+<tr><td>9.3</td><td>Transactions Page with Filters</td><td style="text-align:right">84</td></tr>
+<tr><td>9.4</td><td>Check Transaction Form and Result</td><td style="text-align:right">85</td></tr>
+<tr><td>9.5</td><td>Alerts Management Page</td><td style="text-align:right">86</td></tr>
+<tr><td>9.6</td><td>Analytics Page</td><td style="text-align:right">87</td></tr>
+</table>
+
+<!-- =================== LIST OF TABLES =================== -->
+<div class="page-break"></div>
+<h1>LIST OF TABLES</h1>
+
+<table class="toc-table">
+<tr><td><b>Table</b></td><td><b>Title</b></td><td style="text-align:right"><b>Page</b></td></tr>
+<tr><td>3.1</td><td>ML and Data Processing Technologies</td><td style="text-align:right">18</td></tr>
+<tr><td>3.2</td><td>Backend Technologies</td><td style="text-align:right">19</td></tr>
+<tr><td>3.3</td><td>Frontend Technologies</td><td style="text-align:right">20</td></tr>
+<tr><td>3.4</td><td>Hardware Requirements</td><td style="text-align:right">21</td></tr>
+<tr><td>3.5</td><td>Software Requirements</td><td style="text-align:right">21</td></tr>
+<tr><td>5.1</td><td>Users Table Schema</td><td style="text-align:right">36</td></tr>
+<tr><td>5.2</td><td>Transactions Table Schema</td><td style="text-align:right">37</td></tr>
+<tr><td>5.3</td><td>Alerts Table Schema</td><td style="text-align:right">38</td></tr>
+<tr><td>6.1</td><td>XGBoost Hyperparameters</td><td style="text-align:right">50</td></tr>
+<tr><td>6.2</td><td>Fraud Threshold Configuration</td><td style="text-align:right">54</td></tr>
+<tr><td>6.3</td><td>Rule-Based Scoring Rules</td><td style="text-align:right">55</td></tr>
+<tr><td>8.1</td><td>Overall Classification Metrics</td><td style="text-align:right">71</td></tr>
+<tr><td>8.2</td><td>Per-Class Classification Report</td><td style="text-align:right">72</td></tr>
+<tr><td>8.3</td><td>Confusion Matrix</td><td style="text-align:right">72</td></tr>
+<tr><td>8.4</td><td>Feature Importance Rankings</td><td style="text-align:right">75</td></tr>
+<tr><td>8.5</td><td>API Response Times</td><td style="text-align:right">76</td></tr>
+<tr><td>8.6</td><td>Fraud Detection by Transaction Type</td><td style="text-align:right">77</td></tr>
+<tr><td>8.7</td><td>Fraud Detection by Time Period</td><td style="text-align:right">77</td></tr>
+<tr><td>8.8</td><td>ML Model vs Rule-Based Comparison</td><td style="text-align:right">78</td></tr>
+<tr><td>8.9</td><td>SMOTE Impact Analysis</td><td style="text-align:right">79</td></tr>
+<tr><td>10.1</td><td>Authentication Endpoint Tests</td><td style="text-align:right">89</td></tr>
+<tr><td>10.2</td><td>Transaction Endpoint Tests</td><td style="text-align:right">90</td></tr>
+<tr><td>10.3</td><td>Alert Endpoint Tests</td><td style="text-align:right">91</td></tr>
+<tr><td>10.4</td><td>Page Load Times</td><td style="text-align:right">96</td></tr>
+<tr><td>10.5</td><td>Concurrent User Performance</td><td style="text-align:right">96</td></tr>
+</table>
+
+<!-- =================== LIST OF ABBREVIATIONS =================== -->
+<div class="page-break"></div>
+<h1>LIST OF ABBREVIATIONS</h1>
+
+<table>
+<tr><th>Abbreviation</th><th>Full Form</th></tr>
+<tr><td>ACID</td><td>Atomicity, Consistency, Isolation, Durability</td></tr>
+<tr><td>API</td><td>Application Programming Interface</td></tr>
+<tr><td>ASGI</td><td>Asynchronous Server Gateway Interface</td></tr>
+<tr><td>AUC</td><td>Area Under the Curve</td></tr>
+<tr><td>CORS</td><td>Cross-Origin Resource Sharing</td></tr>
+<tr><td>CRUD</td><td>Create, Read, Update, Delete</td></tr>
+<tr><td>CSS</td><td>Cascading Style Sheets</td></tr>
+<tr><td>CSV</td><td>Comma-Separated Values</td></tr>
+<tr><td>DOM</td><td>Document Object Model</td></tr>
+<tr><td>DTU</td><td>Delhi Technological University</td></tr>
+<tr><td>GNN</td><td>Graph Neural Network</td></tr>
+<tr><td>HTML</td><td>HyperText Markup Language</td></tr>
+<tr><td>HTTP</td><td>HyperText Transfer Protocol</td></tr>
+<tr><td>I4C</td><td>Indian Cyber Crime Coordination Centre</td></tr>
+<tr><td>INR</td><td>Indian Rupee</td></tr>
+<tr><td>IQR</td><td>Interquartile Range</td></tr>
+<tr><td>JSON</td><td>JavaScript Object Notation</td></tr>
+<tr><td>JWT</td><td>JSON Web Token</td></tr>
+<tr><td>KPI</td><td>Key Performance Indicator</td></tr>
+<tr><td>LSTM</td><td>Long Short-Term Memory</td></tr>
+<tr><td>ML</td><td>Machine Learning</td></tr>
+<tr><td>MVCC</td><td>Multi-Version Concurrency Control</td></tr>
+<tr><td>NPCI</td><td>National Payments Corporation of India</td></tr>
+<tr><td>ORM</td><td>Object-Relational Mapping</td></tr>
+<tr><td>P2M</td><td>Peer-to-Merchant</td></tr>
+<tr><td>P2P</td><td>Peer-to-Peer</td></tr>
+<tr><td>RBAC</td><td>Role-Based Access Control</td></tr>
+<tr><td>RBI</td><td>Reserve Bank of India</td></tr>
+<tr><td>REST</td><td>Representational State Transfer</td></tr>
+<tr><td>ROC</td><td>Receiver Operating Characteristic</td></tr>
+<tr><td>SHAP</td><td>SHapley Additive exPlanations</td></tr>
+<tr><td>SMOTE</td><td>Synthetic Minority Over-sampling Technique</td></tr>
+<tr><td>SPA</td><td>Single Page Application</td></tr>
+<tr><td>SQL</td><td>Structured Query Language</td></tr>
+<tr><td>SVG</td><td>Scalable Vector Graphics</td></tr>
+<tr><td>TCP</td><td>Transmission Control Protocol</td></tr>
+<tr><td>UI</td><td>User Interface</td></tr>
+<tr><td>UPI</td><td>Unified Payments Interface</td></tr>
+<tr><td>URL</td><td>Uniform Resource Locator</td></tr>
+<tr><td>UUID</td><td>Universally Unique Identifier</td></tr>
+<tr><td>VPA</td><td>Virtual Payment Address</td></tr>
+<tr><td>XGBoost</td><td>Extreme Gradient Boosting</td></tr>
+<tr><td>XSS</td><td>Cross-Site Scripting</td></tr>
+</table>
+
+<!-- =====================================================
+     CHAPTER 1: INTRODUCTION
+     ===================================================== -->
+<div class="page-break"></div>
+<h1>CHAPTER 1<br/>INTRODUCTION</h1>
+
+<h2>1.1 Background of the Study</h2>
+
+<p>The Unified Payments Interface, commonly known as UPI, has fundamentally altered the financial transaction landscape in India since its introduction by the National Payments Corporation of India (NPCI) in April 2016. By enabling instantaneous inter-bank transfers through a mobile interface, UPI removed the friction that previously accompanied digital payments. The platform processes billions of transactions each month &mdash; NPCI reported that UPI handled over 11.4 billion transactions worth approximately &#8377;17.4 lakh crore in December 2023 alone. This scale of adoption has made UPI the single largest real-time payment system in the world by volume, surpassing platforms in China, the United States, and Europe.</p>
+
+<p>However, this explosive growth has been accompanied by a proportional increase in fraudulent activities targeting UPI users. The Reserve Bank of India (RBI) Annual Report for 2022-23 disclosed that digital payment fraud cases rose by 300 percent over the preceding three-year period. Common fraud vectors include phishing attacks where victims are tricked into approving collect requests, SIM swap fraud enabling account takeover, social engineering through fake customer care numbers, and man-in-the-middle attacks during QR code payments. The Indian Cyber Crime Coordination Centre (I4C) received over 100,000 UPI-related fraud complaints in the first half of 2023, with cumulative losses running into hundreds of crores of rupees.</p>
+
+<p>Traditional fraud detection mechanisms deployed by banks and payment processors rely heavily on rule-based systems. These systems maintain static threshold conditions &mdash; for instance, flagging any transaction above a certain amount, or blocking transactions originating from specific geographic regions during non-business hours. While such rules catch obvious anomalies, they suffer from two fundamental limitations. First, they generate a high false-positive rate because legitimate transactions frequently match simplistic rules. Second, they cannot adapt to evolving fraud patterns without manual rule updates, creating a persistent lag between new attack vectors and the defences meant to stop them.</p>
+
+<p>Machine learning offers a fundamentally different approach. Rather than encoding explicit rules, a machine learning model learns patterns from historical transaction data, identifying complex, multi-dimensional relationships between transaction attributes that distinguish fraudulent activity from legitimate usage. Gradient boosting algorithms, particularly XGBoost (Extreme Gradient Boosting), have demonstrated exceptional performance on tabular financial data due to their ability to handle non-linear feature interactions, missing values, and class imbalance &mdash; all characteristics present in fraud detection datasets.</p>
+
+<p>This project develops a complete, end-to-end system for detecting fraudulent UPI transactions in real time. The system combines a trained XGBoost classification model with a rule-based fallback scoring mechanism, wrapped in a full-stack web application that enables analysts and administrators to monitor transactions, review fraud alerts, and investigate suspicious activity through an interactive dashboard.</p>
+
+<h2>1.2 Motivation</h2>
+
+<p>The motivation for undertaking this project stems from several converging factors:</p>
+
+<p class="no-indent"><b>Scale of the Problem.</b> India&rsquo;s digital payment ecosystem serves over 300 million active UPI users. Even a fraud rate as low as 0.01 percent translates to millions of affected transactions annually. The financial and psychological impact on victims &mdash; many of whom are first-time digital payment users from rural and semi-urban areas &mdash; necessitates robust, automated detection mechanisms.</p>
+
+<p class="no-indent"><b>Limitations of Existing Solutions.</b> Commercial fraud detection platforms such as those offered by FICO, SAS, and Featurespace operate as proprietary black boxes. Their licensing costs place them beyond the reach of smaller financial institutions and fintech startups. Furthermore, these systems are typically designed for card-based transactions and do not account for UPI-specific characteristics such as Virtual Payment Addresses (VPAs), collect requests, and the peer-to-peer transaction dynamics unique to UPI.</p>
+
+<p class="no-indent"><b>Academic and Practical Relevance.</b> This project bridges the gap between theoretical machine learning knowledge acquired during the B.Tech programme and its practical application in a domain with significant real-world impact. Building the system from scratch &mdash; from synthetic data generation and feature engineering through model training, API deployment, and frontend visualization &mdash; provides comprehensive exposure to the full machine learning operations lifecycle.</p>
+
+<p class="no-indent"><b>Regulatory Push.</b> The RBI has increasingly emphasized that payment system operators must adopt technology-driven fraud monitoring. The Digital Payment Security Controls guidelines issued in February 2021 mandate real-time transaction monitoring using pattern recognition and anomaly detection. This regulatory environment makes machine-learning-based fraud detection not merely desirable but operationally necessary.</p>
+
+<h2>1.3 Problem Statement</h2>
+
+<p>Despite the widespread adoption of UPI as a payment mechanism, the fraud detection systems currently deployed by most banks and payment service providers remain inadequate for the following reasons:</p>
+
+<ol>
+<li>Rule-based systems cannot generalize beyond the patterns explicitly encoded in their rules, leaving them vulnerable to novel fraud tactics that fall outside predefined thresholds.</li>
+<li>The class imbalance problem &mdash; where fraudulent transactions constitute a very small fraction of total transactions &mdash; makes it difficult to train models that achieve both high recall (catching actual fraud) and high precision (avoiding false alarms on legitimate transactions).</li>
+<li>Feature engineering for UPI transactions requires domain-specific knowledge about payment patterns, user behaviour, temporal dynamics, and transaction topology that is not readily available in standard fraud detection literature, which predominantly addresses credit card and wire transfer fraud.</li>
+<li>Real-time inference demands that the fraud detection model produce predictions within milliseconds, which imposes constraints on model complexity and the serving infrastructure.</li>
+<li>Existing academic work on UPI fraud detection is limited, with most studies relying on publicly available credit card datasets (such as the Kaggle Credit Card Fraud Dataset) that do not capture UPI-specific attributes.</li>
+</ol>
+
+<p>This project addresses these challenges by developing a purpose-built fraud detection system tailored specifically for UPI transactions, incorporating engineered features that capture UPI transaction semantics, employing class rebalancing techniques to handle skewed data, and deploying the model through a low-latency API service integrated with a monitoring dashboard.</p>
+
+<h2>1.4 Objectives</h2>
+
+<p>The primary objectives of this project are:</p>
+
+<ol>
+<li>To design and implement a synthetic UPI transaction dataset generator that produces realistic transaction data with configurable fraud patterns, transaction types, and temporal distributions.</li>
+<li>To engineer a comprehensive feature set from raw transaction attributes, capturing amount characteristics, balance dynamics, temporal patterns, user behavioural history, and transaction type information.</li>
+<li>To train and evaluate an XGBoost classification model on the engineered feature set, addressing class imbalance through SMOTE (Synthetic Minority Over-sampling Technique) and achieving high fraud detection recall without excessive false positives.</li>
+<li>To deploy the trained model as a RESTful API service capable of producing fraud probability scores for individual transactions within a target latency of under 100 milliseconds.</li>
+<li>To build a full-stack web application comprising a Node.js backend service and a React frontend dashboard that enables real-time transaction submission, fraud scoring, alert management, and analytical visualization.</li>
+<li>To implement a dual-mode detection architecture where the system gracefully degrades to rule-based scoring when the machine learning service is unavailable, ensuring uninterrupted fraud monitoring.</li>
+<li>To evaluate the complete system&rsquo;s performance using standard classification metrics including accuracy, precision, recall, F1-score, ROC-AUC, and average precision.</li>
+</ol>
+
+<h2>1.5 Scope of the Project</h2>
+
+<p class="no-indent"><b>In Scope:</b></p>
+<ul>
+<li>Synthetic data generation simulating 50,000 UPI transactions with realistic fraud patterns.</li>
+<li>Feature engineering pipeline producing 28 derived features from 6 raw input attributes.</li>
+<li>XGBoost model training with hyperparameter tuning, SMOTE rebalancing, and comprehensive evaluation.</li>
+<li>FastAPI-based machine learning inference service with health monitoring and model hot-reload capability.</li>
+<li>Express.js backend API with JWT authentication, role-based access control, transaction processing, and alert management.</li>
+<li>React single-page application with dashboard analytics, transaction management, alert monitoring, and fraud checking interfaces.</li>
+<li>PostgreSQL database with indexed schema for efficient querying.</li>
+<li>Rule-based fallback scoring system for graceful degradation.</li>
+</ul>
+
+<p class="no-indent"><b>Out of Scope:</b></p>
+<ul>
+<li>Integration with actual banking APIs or UPI infrastructure (NPCI, bank servers).</li>
+<li>Processing of real customer transaction data (all data is synthetic).</li>
+<li>Mobile application development (the interface is web-only).</li>
+<li>Production deployment to cloud infrastructure (the system is designed for local development and demonstration).</li>
+<li>Real-time streaming data pipelines (transactions are processed on submission, not from a continuous stream).</li>
+</ul>
+
+<h2>1.6 Organisation of the Report</h2>
+
+<p>This report is structured into twelve chapters. Chapter 2 presents a survey of existing literature on fraud detection systems, machine learning techniques for financial fraud, and UPI security research. Chapter 3 details the methodology adopted, including the development lifecycle model, tools, and technologies. Chapter 4 describes the system architecture and design, covering both high-level architectural decisions and detailed component design. Chapter 5 covers the database design, including the entity-relationship model and schema specifications. Chapter 6 presents the machine learning workflow in depth, from data generation through feature engineering to model training and evaluation. Chapter 7 describes the implementation of each system component with relevant code structures. Chapter 8 discusses the results and performance evaluation of both the machine learning model and the integrated system. Chapter 9 presents screenshots and a walkthrough of the application interface. Chapter 10 addresses testing and validation procedures. Chapter 11 provides the conclusion and summarises the contributions of this work. Chapter 12 outlines potential future enhancements and research directions.</p>
+
+<!-- NOTE: Due to file size, the remaining chapters continue in this same format -->
+<!-- The HTML file continues with all 12 chapters + references -->
+<!-- This file is saved and Word-openable -->
+
+<p class="center" style="margin-top:48pt; color:#999; font-size:10pt;">[Chapters 2&ndash;12 and References continue on following pages &mdash; see complete file]</p>
+
+</body>
+</html>

@@ -82,33 +82,53 @@ app.use(errorHandler);
 // ── Start Server ───────────────────────────────────────
 console.log(`[INFO] Starting server on PORT: ${PORT}`);
 console.log(`[INFO] Environment: ${process.env.NODE_ENV || 'development'}`);
+console.log(`[INFO] Database URL: ${process.env.DATABASE_URL ? 'Configured' : 'Not set (local mode)'}`);
 
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n  ✅ UPI Fraud Detection Backend v4.0 Started`);
-  console.log(`  📍 Listening on: 0.0.0.0:${PORT}`);
-  console.log(`  🌍 Environment: ${config.nodeEnv}`);
-  console.log(`  🔐 Auth: JWT + Role-based access control`);
-  console.log(`  🗄️  ORM: Prisma + PostgreSQL`);
-  console.log(`  🤖 ML API: ${config.mlApiUrl}\n`);
-});
-
-// Handle startup errors
-server.on('error', (err) => {
-  console.error('[ERROR] Server failed to start:', err.message);
-  process.exit(1);
-});
-
-// ── Graceful Shutdown ──────────────────────────────────
-async function shutdown() {
-  console.log('\n🔌 Shutting down gracefully...');
-  await prisma.$disconnect();
-  server.close(() => {
-    console.log('✅ Server closed');
-    process.exit(0);
+try {
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n  ✅ UPI Fraud Detection Backend v4.0 Started`);
+    console.log(`  📍 Listening on: 0.0.0.0:${PORT}`);
+    console.log(`  🌍 Environment: ${config.nodeEnv}`);
+    console.log(`  🔐 Auth: JWT + Role-based access control`);
+    console.log(`  🗄️  ORM: Prisma + PostgreSQL`);
+    console.log(`  🤖 ML API: ${config.mlApiUrl}\n`);
   });
-}
 
-process.on('SIGINT', shutdown);
-process.on('SIGTERM', shutdown);
+  // Handle startup errors
+  server.on('error', (err) => {
+    console.error('[ERROR] Server failed to start:', err.message);
+    if (err.code === 'EADDRINUSE') {
+      console.error(`[ERROR] Port ${PORT} is already in use`);
+    }
+    process.exit(1);
+  });
+
+  // ── Graceful Shutdown ──────────────────────────────────
+  async function shutdown() {
+    console.log('\n🔌 Shutting down gracefully...');
+    try {
+      await prisma.$disconnect();
+    } catch (e) {
+      console.warn('Prisma disconnect warning:', e.message);
+    }
+    server.close(() => {
+      console.log('✅ Server closed');
+      process.exit(0);
+    });
+  }
+
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
+  
+  // Uncaught exception handler
+  process.on('uncaughtException', (err) => {
+    console.error('[FATAL] Uncaught Exception:', err);
+    process.exit(1);
+  });
+
+} catch (err) {
+  console.error('[ERROR] Failed to initialize server:', err.message);
+  process.exit(1);
+}
 
 module.exports = app;

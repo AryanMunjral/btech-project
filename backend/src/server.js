@@ -77,11 +77,11 @@ app.get('/', (req, res) => {
 app.use(errorHandler);
 
 // ── Start Server ───────────────────────────────────────
-const server = app.listen(config.port, () => {
+const server = app.listen(config.port, '0.0.0.0', () => {
   console.log(`
   ╔══════════════════════════════════════════════════╗
   ║   UPI Fraud Detection Backend API v4.0           ║
-  ║   Running on: http://localhost:${config.port}              ║
+  ║   Running on: 0.0.0.0:${config.port}                        ║
   ║   Environment: ${config.nodeEnv.padEnd(30)}║
   ║   Auth: JWT + Role-based access control          ║
   ║   ORM: Prisma + PostgreSQL                       ║

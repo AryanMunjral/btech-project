@@ -11,6 +11,9 @@ const { prisma } = require('./config/database');
 
 const app = express();
 
+// ── Get PORT from environment or config ────────────────
+const PORT = process.env.PORT || config.port || 5000;
+
 // ── Security & Middleware ──────────────────────────────
 app.use(helmet());
 app.use(cors({ origin: config.corsOrigin, credentials: true }));
@@ -77,17 +80,22 @@ app.get('/', (req, res) => {
 app.use(errorHandler);
 
 // ── Start Server ───────────────────────────────────────
-const server = app.listen(config.port, '0.0.0.0', () => {
-  console.log(`
-  ╔══════════════════════════════════════════════════╗
-  ║   UPI Fraud Detection Backend API v4.0           ║
-  ║   Running on: 0.0.0.0:${config.port}                        ║
-  ║   Environment: ${config.nodeEnv.padEnd(30)}║
-  ║   Auth: JWT + Role-based access control          ║
-  ║   ORM: Prisma + PostgreSQL                       ║
-  ║   ML API: ${config.mlApiUrl.padEnd(36)}║
-  ╚══════════════════════════════════════════════════╝
-  `);
+console.log(`[INFO] Starting server on PORT: ${PORT}`);
+console.log(`[INFO] Environment: ${process.env.NODE_ENV || 'development'}`);
+
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n  ✅ UPI Fraud Detection Backend v4.0 Started`);
+  console.log(`  📍 Listening on: 0.0.0.0:${PORT}`);
+  console.log(`  🌍 Environment: ${config.nodeEnv}`);
+  console.log(`  🔐 Auth: JWT + Role-based access control`);
+  console.log(`  🗄️  ORM: Prisma + PostgreSQL`);
+  console.log(`  🤖 ML API: ${config.mlApiUrl}\n`);
+});
+
+// Handle startup errors
+server.on('error', (err) => {
+  console.error('[ERROR] Server failed to start:', err.message);
+  process.exit(1);
 });
 
 // ── Graceful Shutdown ──────────────────────────────────

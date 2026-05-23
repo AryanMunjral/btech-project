@@ -79,7 +79,7 @@ with st.sidebar:
     # Backend API URL
     api_url = st.text_input(
         "Backend API URL",
-        value="http://localhost:5000",
+        value="https://btech-project-1.onrender.com",
         help="Your Express backend URL for fraud predictions"
     )
     

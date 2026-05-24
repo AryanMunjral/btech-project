@@ -11,6 +11,9 @@ const { prisma } = require('./config/database');
 
 const app = express();
 
+// Trust proxy for Render/Vercel (needed for rate limiter)
+app.set('trust proxy', 1);
+
 // ── Get PORT from environment or config ────────────────
 const PORT = process.env.PORT || config.port || 5000;
 

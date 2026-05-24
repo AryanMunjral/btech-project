@@ -19,7 +19,15 @@ const PORT = process.env.PORT || config.port || 5000;
 
 // ── Security & Middleware ──────────────────────────────
 app.use(helmet());
-app.use(cors({ origin: config.corsOrigin, credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "https://btech-project-git-main-aryanmunjrals-projects.vercel.app",
+    ],
+    credentials: true,
+  })
+);
+app.options("*", cors());
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 

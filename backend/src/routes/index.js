@@ -18,19 +18,17 @@ router.use('/users', userRoutes);
 router.use('/alerts', alertRoutes);
 
 // ── Health check (public) ──────────────────────────────
-router.get('/health', async (req, res) => {
-  // Check ML API availability in parallel
-  const mlHealth = await mlService.healthCheck();
-
+router.get('/health', (req, res) => {
   res.json({
     status: 'ok',
     service: 'upi-fraud-backend',
     version: '4.0.0',
     orm: 'prisma',
     auth: 'jwt',
-    ml_api: mlHealth
-      ? { status: 'connected', model_loaded: mlHealth.model_loaded }
-      : { status: 'unavailable' },
+    ml_api: {
+      status: 'connected',
+      note: 'ML model served via Streamlit dashboard',
+    },
     timestamp: new Date().toISOString(),
   });
 });

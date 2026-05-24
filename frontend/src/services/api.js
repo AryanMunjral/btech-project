@@ -23,8 +23,14 @@
 
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-const ML_API_BASE = import.meta.env.VITE_ML_API_URL || 'http://localhost:8000';
+// Production URLs (Render-deployed services)
+const PROD_API_URL = 'https://upi-fraud-backend-pk2g.onrender.com/api';
+const PROD_ML_API_URL = 'https://upi-fraud-ml-api.onrender.com';
+
+const isProd = import.meta.env.PROD || window.location.hostname !== 'localhost';
+
+const API_BASE = import.meta.env.VITE_API_URL || (isProd ? PROD_API_URL : 'http://localhost:5000/api');
+const ML_API_BASE = import.meta.env.VITE_ML_API_URL || (isProd ? PROD_ML_API_URL : 'http://localhost:8000');
 
 // ═══════════════════════════════════════════════════════════
 // AXIOS INSTANCES
